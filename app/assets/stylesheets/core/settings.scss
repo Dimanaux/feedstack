@@ -213,7 +213,7 @@ $accordionmenu-arrow-color: $primary-color;
 // --------
 
 $badge-background: $primary-color;
-$badge-color: foreground($badge-background);
+// $badge-color: foreground($badge-background);
 $badge-padding: .3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: .6rem;
@@ -361,7 +361,7 @@ $input-radius: $global-radius;
 // ---------
 
 $label-background: $primary-color;
-$label-color: foreground($label-background);
+// $label-color: foreground($label-background);
 $label-font-size: .8rem;
 $label-padding: .33333rem .5rem;
 $label-radius: $global-radius;
@@ -432,7 +432,7 @@ $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
 $pagination-item-background-hover: $light-gray;
 $pagination-item-background-current: $primary-color;
-$pagination-item-color-current: foreground($pagination-item-background-current);
+// $pagination-item-color-current: foreground($pagination-item-background-current);
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
