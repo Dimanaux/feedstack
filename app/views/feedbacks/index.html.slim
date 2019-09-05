@@ -1,0 +1,17 @@
+table
+  thead
+    tr
+      th
+        = 'Name'
+      th
+        = 'Email'
+      th width = '65%'
+        = 'Text'
+  tbody
+    - @feedbacks.each do |f|
+      tr
+        td = f.name
+        td = mail_to f.email
+        td = f.text
+
+= paginate @feedbacks
