@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :feedback do
-    name "MyString"
-    email "MyString"
-    text "MyString"
+    name { "MyString" }
+    email { "MyString" }
+    text { "MyString" }
   end
 end
