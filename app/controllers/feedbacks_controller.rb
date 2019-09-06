@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
   def index
     authorize Feedback, :index?
     @feedbacks =
-        Feedback.where("name LIKE :w OR text LIKE :w",
+        Feedback.where("name LIKE :w OR text LIKE :w OR email LIKE :w",
                        { w: "%%#{params[:query] || ''}%%" })
                 .order(created_at: :desc)
                 .page(@page)
