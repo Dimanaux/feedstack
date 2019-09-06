@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+  body
+    h1
+      | New feedback on Feedstack!
+    p = @feedback.text
+    br
+    p
+      = 'From '
+      i = @feedback.name
+      = ', '
+      = mail_to @feedback.email

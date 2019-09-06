@@ -3,7 +3,11 @@ class FeedbacksController < ApplicationController
 
   def index
     authorize Feedback, :index?
-    @feedbacks = Feedback.order(created_at: :desc).page @page
+    @feedbacks =
+        Feedback.where("name LIKE :w OR text LIKE :w",
+                       { w: "%%#{params[:query] || ''}%%" })
+                .order(created_at: :desc)
+                .page(@page)
   end
 
   def success; end
@@ -21,11 +25,16 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to :feedbacks_success, notice: 'Feedback was successfully sent!' }
-        format.json { render :show, status: :created, location: @feedback }
+        FeedbackMailer.with(feedback: @feedback).new_feedback_email.deliver_now
+
+        format.html { redirect_to :feedbacks_success,
+                      notice: 'Feedback was successfully sent!' }
+        format.json { render :show, status: :created,
+                      location: @feedback }
       else
         format.html { render :new }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.json { render json: @feedback.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -34,7 +43,7 @@ class FeedbacksController < ApplicationController
 
   def feedback_params
     params.fetch(:feedback, {})
-    params.require(:feedback).permit(:name, :email, :text, :page)
+    params.require(:feedback).permit(:name, :email, :text, :page, :query)
   end
 
   def set_page

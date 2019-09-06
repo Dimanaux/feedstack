@@ -78,7 +78,8 @@ Rails.application.configure do
       port:                 ENV.fetch("SMTP_PORT", 587),
       domain:               ENV.fetch("SMTP_DOMAIN", "heroku.com"),
       user_name:            ENV.fetch("SMTP_USERNAME") { ENV.fetch("SENDGRID_USERNAME") },
-      password:             ENV.fetch("SMTP_PASSWORD") { ENV.fetch("SENDGRID_PASSWORD") }
+      password:             ENV.fetch("SMTP_PASSWORD") { ENV.fetch("SENDGRID_PASSWORD") },
+      ssl:                  ENV.fetch("SMTP_SSL", false)
     }
   end
 
