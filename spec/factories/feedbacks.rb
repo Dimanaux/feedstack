@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :feedback do
-    name { "MyString" }
-    email { "MyString" }
-    text { "MyString" }
+    name { 'Rubyist' }
+    email { 'u@ruby.com' }
+    text { 'Я рублю фишку' }
   end
 end
